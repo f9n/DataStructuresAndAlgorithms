@@ -73,10 +73,11 @@ void display(int *c, int *linkc, int headc, int nc) {
 int * merge(int *c, int *linka, int *linkb, int heada, int headb, int na, int nc) {
   cout << "[+] In Merge Function" << endl;
   cout << "Na and Nc "<< na << " " << nc << endl;
+  printArrayElements(c, nc, "c");
   int *linkc = (int *)malloc(sizeof(int) * nc);
   int headc, buffer; // buffer is next
-  cout << "[-] HeadA HeadB HeadC Buffer: " << heada << " " << headb << " " << headc << " " << buffer << endl;
-
+  cout << "[-] First HeadA HeadB HeadC Buffer: " << heada << " " << headb << " " << headc << " " << buffer << endl;
+  cout << "[-] First c[heada]:" << c[heada] << " < " << "c[na+headb]:" << c[na+headb] << endl;
   // Burda ilk buffer, ve headc degerini aliyoruz. buffer, gelecegi goren deger diyelim. headc de linkli dizide suanlik durumu(indexi).
   if (c[heada] < c[na+headb]) {
     headc = heada;
@@ -97,12 +98,12 @@ int * merge(int *c, int *linka, int *linkb, int heada, int headb, int na, int nc
     cout << "[-] After: HeadA HeadB HeadC Buffer: " << heada << " " << headb << " " << headc << " " << buffer << endl;
     printArrayElements(linkc, nc, "linkc");
     msleep(2000);
-    cout << c[heada] << " < " << c[na+headb] << endl;
+    cout << "[-] In While c[heada]:" << c[heada] << " < " << "c[na+headb]:" << c[na+headb] << endl;
     // heada ve headb nin degerleri kendi linkli dizilerindeki sinirlari cikamiyor. 0 < heada < na , 0 < headb < nb
     // buffer ve headc ise 0 < x < nc
     // Suanki durumu karsilastirip bir sonraki adimda nereye atlayacagimiz buluyoruz.
     // Esitlege kadar her sey iyi sonra patliyor.
-
+    //
     if (c[heada] < c[na+headb]) {
       cout << "c[heada] < c[na+headb]" << endl;
       headc = buffer;
