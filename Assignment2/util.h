@@ -16,6 +16,7 @@ struct n {
 typedef struct n node;
 
 void displayOneNode(node * root);
+void displayIdNoUsernameSurnameOneNode(node * root);
 void displayFriendsOneNode(node * root);
 void displayTreeWithInorder(node * tree);
 
@@ -24,9 +25,9 @@ node * insertNewUser(node * root, int idno, string username, string surname, int
 
 node * getUser(node * root, int IdNo);
 bool contains(node * root, int IdNo);
+bool Friends(node * root, int IdNo);
 node * deleteUser(int IdNo);
 int size(node * tree);
-void Friend(int IdNo);
 
 void destroyFriends(node * tree);
 void destroyNodes(node * tree);

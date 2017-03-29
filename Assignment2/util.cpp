@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 node * getUser(node * root, int IdNo) {
   if(root != NULL) {
     if(root->IdNo == IdNo) {
@@ -18,7 +19,15 @@ node * getUser(node * root, int IdNo) {
 bool contains(node * root, int IdNo) {
   node * result = getUser(root, IdNo);
   if(result != NULL) {
-    cout << "Username: " << result->Username << " Surname: " << result->Surname << endl;
+    displayIdNoUsernameSurnameOneNode(result);
+    return true;
+  }
+  return false;
+}
+bool Friends(node * root, int IdNo) {
+  node * result = getUser(root, IdNo);
+  if(result != NULL) {
+    displayFriendsOneNode(result);
     return true;
   }
   return false;
@@ -71,11 +80,14 @@ void displayFriendsOneNode(node * root) {
     }
   }
 }
+void displayIdNoUsernameSurnameOneNode(node * root) {
+  cout << "[+] IdNo: " << root->IdNo << " Username: " << root->Username << " Surname: " << root->Surname << endl;
+}
 void displayOneNode(node * root) {
   //cout << "### DisplayOneNode - Login" << endl;
   if(root != NULL) {
     //cout << "### DisplayOneNode - Not Null" << endl;
-    cout << "[+] IdNo: " << root->IdNo << " Username: " << root->Username << " Surname: " << root->Surname << endl;
+    displayIdNoUsernameSurnameOneNode(root);
     displayFriendsOneNode(root);
   }
 }
