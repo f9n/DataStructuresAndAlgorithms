@@ -67,3 +67,18 @@ void displayTreeWithInorder(node * tree) {
   }
 }
 
+void destroyFriends(node * tree) {
+  if(tree != NULL) {
+    free(tree->IdOfFriends);
+    destroyFriends(tree->Left);
+    destroyFriends(tree->Right);
+  }
+}
+void destroyNodes(node * tree) {
+  if(tree != NULL) {
+    destroyNodes(tree->Left);
+    destroyNodes(tree->Right);
+    free(tree);
+  }
+}
+
