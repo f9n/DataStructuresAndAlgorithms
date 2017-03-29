@@ -46,7 +46,7 @@ void displayFriendsOneNode(node * root) {
   if(root->IdOfFriends != NULL) {
     //cout << "### DisplayFriendsOneNode - Not Null" << endl;
     for(int i = 0; i < root->IdOfFriendsAmount; i++) {
-      cout << i << ". friend id: " << root->IdOfFriends[i] << endl;
+      cout << "\t" << i << ". friend id: " << root->IdOfFriends[i] << endl;
     }
   }
 }

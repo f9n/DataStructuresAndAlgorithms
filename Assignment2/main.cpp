@@ -4,23 +4,21 @@
 using namespace std;
 
 int main() {
-  cout << "Naber" << endl;
+  cout << "Hi, Started Program" << endl;
   node * root = NULL;
-  root = insertNewUser(root, 20, "Ozgur", "Yildirim");
+  cout << endl << "[=] Tree ..." << endl;
+  root = insertNewUserWithFriends(root, 20, "Ozgur", "Yildirim", 2, 4, 5);
+  root = insertNewUserWithFriends(root, 30, "Esra", "Atas", 1, 3);
+  root = insertNewUserWithFriends(root, 40, "Emre", "Bugra", 1, 6);
+  root = insertNewUserWithFriends(root, 50, "Okan", "Yeah", 0);
   displayTreeWithInorder(root);
-  /*displayOneNode(root);
-  displayOneNode(root->Left);
-  displayOneNode(root->Right);*/
-  root = insertNewUser(root, 30, "Esra", "Atas");
-  displayTreeWithInorder(root);
-  /*displayOneNode(root);
-  displayOneNode(root->Left);
-  displayOneNode(root->Right);*/
-  root = insertNewUser(root, 40, "Emre", "Bugra");
-  displayTreeWithInorder(root);
-  /*displayOneNode(root);
-  displayOneNode(root->Left);
-  displayOneNode(root->Right);
+
+  destroyFriends(root);
+  destroyNodes(root);
+  return 0;
+}
+
+/*
   root->IdOfFriends[0] = 5;
   root->IdOfFriendsAmount++;
   displayOneNode(root);
@@ -28,8 +26,4 @@ int main() {
   root->IdOfFriends[1] = 4;
   root->IdOfFriendsAmount++;
   displayOneNode(root);
-  free(root->IdOfFriends);
-  */
-  free(root);
-  return 0;
-}
+*/
