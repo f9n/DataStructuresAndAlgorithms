@@ -5,14 +5,20 @@ using namespace std;
 
 int main() {
   cout << "Naber" << endl;
-  node * root = (node *)malloc(sizeof(node));
-  root->Left  = NULL;
-  root->Right = NULL;
-  root->IdNo = 20;
-  root->Username = "Ozgur";
-  root->Surname  = "Yildirim";
-  root->IdOfFriends = (int*)malloc(sizeof(int));
+  node * root = NULL;
+  root = insertNewUser(root, 20, "Ozgur", "Yildirim");
   displayOneNode(root);
+  displayOneNode(root->Left);
+  displayOneNode(root->Right);
+  root = insertNewUser(root, 30, "Esra", "Atas");
+  displayOneNode(root);
+  displayOneNode(root->Left);
+  displayOneNode(root->Right);
+  root = insertNewUser(root, 40, "Emre", "Bugra");
+  displayOneNode(root);
+  displayOneNode(root->Left);
+  displayOneNode(root->Right);
+  /*
   root->IdOfFriends[0] = 5;
   root->IdOfFriendsAmount++;
   displayOneNode(root);
@@ -21,6 +27,7 @@ int main() {
   root->IdOfFriendsAmount++;
   displayOneNode(root);
   free(root->IdOfFriends);
+  */
   free(root);
   return 0;
 }
