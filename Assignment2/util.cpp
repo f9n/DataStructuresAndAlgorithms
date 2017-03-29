@@ -3,6 +3,26 @@
 
 using namespace std;
 
+node * getUser(node * root, int IdNo) {
+  if(root != NULL) {
+    if(root->IdNo == IdNo) {
+      return root;
+    } else if(root->IdNo < IdNo) {
+      root  = getUser(root->Right, IdNo);
+    } else if(root->IdNo > IdNo) {
+      root = getUser(root->Left, IdNo);
+    }
+  }
+  return root;
+}
+bool contains(node * root, int IdNo) {
+  node * result = getUser(root, IdNo);
+  if(result != NULL) {
+    cout << "Username: " << result->Username << " Surname: " << result->Surname << endl;
+    return true;
+  }
+  return false;
+}
 node * insertNewUser(node * parent, int x, string username, string surname, int * IdOfFriends, int IdOfFriendsAmount) {
   /*
     We are inserting user property to binary search tree.
@@ -37,6 +57,7 @@ node * insertNewUserWithFriends(node * parent, int x, string username, string su
     }
     parent = insertNewUser(parent, x, username, surname, IdOfFriends, IdOfFriendsAmount);
   }
+  parent = insertNewUser(parent, x, username, surname, NULL, 0);
   va_end(ap);
   return parent;
 }
