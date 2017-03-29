@@ -17,6 +17,6 @@ typedef struct n node;
 void displayOneNode(node * root);
 void displayFriendOneNode(node * root);
 node * insertNewUser(node * root, int x, string username, string surname);
-
+void displayTreeWithInorder(node * tree);
 
 #endif // UTIL_H

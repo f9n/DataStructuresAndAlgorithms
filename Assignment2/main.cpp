@@ -7,18 +7,20 @@ int main() {
   cout << "Naber" << endl;
   node * root = NULL;
   root = insertNewUser(root, 20, "Ozgur", "Yildirim");
-  displayOneNode(root);
+  displayTreeWithInorder(root);
+  /*displayOneNode(root);
   displayOneNode(root->Left);
-  displayOneNode(root->Right);
+  displayOneNode(root->Right);*/
   root = insertNewUser(root, 30, "Esra", "Atas");
-  displayOneNode(root);
+  displayTreeWithInorder(root);
+  /*displayOneNode(root);
   displayOneNode(root->Left);
-  displayOneNode(root->Right);
+  displayOneNode(root->Right);*/
   root = insertNewUser(root, 40, "Emre", "Bugra");
-  displayOneNode(root);
+  displayTreeWithInorder(root);
+  /*displayOneNode(root);
   displayOneNode(root->Left);
   displayOneNode(root->Right);
-  /*
   root->IdOfFriends[0] = 5;
   root->IdOfFriendsAmount++;
   displayOneNode(root);
