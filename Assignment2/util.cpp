@@ -4,6 +4,14 @@
 using namespace std;
 
 
+int size(node * root, int amount) {
+  if(root != NULL) {
+    amount++;
+    amount += size(root->Left, 0);
+    amount += size(root->Right, 0);
+  }
+  return amount;
+}
 node * getUser(node * root, int IdNo) {
   if(root != NULL) {
     if(root->IdNo == IdNo) {

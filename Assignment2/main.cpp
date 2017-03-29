@@ -27,6 +27,10 @@ int main() {
   bool status_friends = Friends(root, 15);
   cout << "Status: " << status_friends << endl;
 
+  cout << endl << "[=] Testing size Function" << endl;
+  int tree_size = size(root, 0);
+  cout << "Tree Size: " << tree_size << endl;
+  
   destroyFriends(root);
   destroyNodes(root);
   return 0;

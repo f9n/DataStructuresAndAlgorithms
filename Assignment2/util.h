@@ -27,7 +27,7 @@ node * getUser(node * root, int IdNo);
 bool contains(node * root, int IdNo);
 bool Friends(node * root, int IdNo);
 node * deleteUser(int IdNo);
-int size(node * tree);
+int size(node * tree, int amount);
 
 void destroyFriends(node * tree);
 void destroyNodes(node * tree);
