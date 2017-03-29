@@ -17,9 +17,17 @@ typedef struct n node;
 
 void displayOneNode(node * root);
 void displayFriendsOneNode(node * root);
-node * insertNewUserWithFriends(node * root, int x, string username, string surname, int args, ...);
-node * insertNewUser(node * root, int x, string username, string surname, int * IdOfFriends, int IdOfFriendsAmount);
 void displayTreeWithInorder(node * tree);
+
+node * insertNewUserWithFriends(node * root, int x, string username, string surname, int args, ...);
+node * insertNewUser(node * root, int idno, string username, string surname, int * IdOfFriends, int IdOfFriendsAmount);
+
+node * getUser(node * root, int IdNo);
+bool contains(node * root, int IdNo);
+node * deleteUser(int IdNo);
+int size(node * tree);
+void Friend(int IdNo);
+
 void destroyFriends(node * tree);
 void destroyNodes(node * tree);
 #endif // UTIL_H
