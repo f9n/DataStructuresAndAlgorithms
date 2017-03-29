@@ -20,8 +20,13 @@ int main() {
   displayTreeWithInorder(root);
 
   cout << endl << "[=] Testing Contains Function" << endl;
-  bool status = contains(root, 10);
-  cout << "Status: " << status << endl;
+  bool status_contains = contains(root, 10);
+  cout << "Status: " << status_contains << endl;
+
+  cout << endl << "[=] Testing Friends Function" << endl;
+  bool status_friends = Friends(root, 15);
+  cout << "Status: " << status_friends << endl;
+
   destroyFriends(root);
   destroyNodes(root);
   return 0;
