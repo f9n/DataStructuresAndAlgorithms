@@ -1,19 +1,31 @@
 CC=g++
 
-main: main.o util.o menu.o
-	$(CC) main.o util.o menu.o -o main
+all:
+	mkdir -p obj
+	@echo "Created Obj File!"
 
-main.o: main.cpp
-	$(CC) -c main.cpp -o main.o
+compile:	bin/main
 
-util.o: util.cpp
-	$(CC) -c util.cpp -o util.o
+help:
+	@echo "make compile   : compile source code"
+	@echo "make run       : compiler source code and run"
+	@echo "make clean     : delete all obj file and executable file."
+	@echo "Before compiler source code, you should create obj directory with this command: make all"
 
-menu.o: menu.cpp
-	$(CC) -c menu.cpp -o menu.o
+bin/main: obj/main.o obj/util.o obj/menu.o
+	$(CC) obj/main.o obj/util.o obj/menu.o -o bin/main
 
-run: main
-	./main
+obj/main.o: src/main.cpp
+	$(CC) -c src/main.cpp -o obj/main.o
+
+obj/util.o: src/util.cpp
+	$(CC) -c src/util.cpp -o obj/util.o
+
+obj/menu.o: src/menu.cpp
+	$(CC) -c src/menu.cpp -o obj/menu.o
+
+run: bin/main
+	./bin/main
 
 clean:
-	rm -f *.o main
+	rm -f obj/* bin/main
