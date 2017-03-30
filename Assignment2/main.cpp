@@ -42,28 +42,39 @@ void startingMenu() {
   }
 }
 void shellMenu(node * root) {
+  struct commands {
+    string command;
+    string description;
+  };
+  struct commands commandList[12] = {
+    {"exit", "exit the program"}, // 0
+    {"clear", "clear screen"}, // 1
+    {"help", "listed command list"}, // 2
+    {"insertnewuser", "insert a new user"}, // 3
+    {"printinorder", "print in order"}, // 4
+    {"printgreater", "printing greater all node"}, // 5
+    {"getfriends","get frinedns in one node"}, // 6
+    {"size", "size of tree"}, // 7
+    {"printnext", "print subtree"}, // 8
+    {"deleteuser", "deleting a user"}, // 9
+    {"contains", "contains IdNo in tree"}, // 10
+    {"test", "testing program functions"} // 11
+  };
   string inputStr;
   int inputInt;
-  string commandList[10] = {"insertuser", "printinorder", "test",
-                           "contains", "exit", "help", "clear",
-                            "printgreater", "getfriends", "size"};
-  string commandListDescription[10] = {"insert a new user", "print in order", "testing command",
-                                      "contains idno in tree", "exit the program", "listing command list",
-                                       "clear screen", "printing greater id no", "get friends in node",
-                                       "size of tree"};
   while(1) {
     cout << endl << "bst> ";
     cin >> inputStr;
-    if(inputStr == commandList[4]) {
+    if(inputStr == commandList[0].command) {
       break;
-    } else if(inputStr == commandList[6]) {
+    } else if(inputStr == commandList[1].command) {
       system("clear");
-    } else if(inputStr == commandList[5]) {
+    } else if(inputStr == commandList[2].command) {
       cout << "\tCOMMAND LIST" << endl;
-      for(int i = 0; i < 10; i++) {
-        cout << " " << commandList[i] << "  : " + commandListDescription[i] << endl;
+      for(int i = 0; i < 12; i++) {
+        cout << " " << commandList[i].command << "  : " + commandList[i].description << endl;
       }
-    } else if(inputStr == commandList[0]) {
+    } else if(inputStr == commandList[3].command) {
       int IdNo;
       string username, surname;
       int friendsAmount;
@@ -83,29 +94,33 @@ void shellMenu(node * root) {
       }
       root = insertNewUser(root, IdNo, username, surname, friends, friendsAmount);
       cout << "Inserted All!";
-    } else if(inputStr == commandList[1]) {
+    } else if(inputStr == commandList[4].command) {
       cout << "PrintInOrder..." << endl;
       printInOrder(root);
-    } else if(inputStr == commandList[2]) {
-      root = test(root);
-    } else if(inputStr == commandList[3]) {
+    } else if(inputStr == commandList[5].command) {
+      cout << "bst[print-greater]> Entry IdNo: ";
+      cin >> inputInt;
+      printGreater(root, inputInt);
+    } else if(inputStr == commandList[6].command) {
+      cout << "bst[getFriends]> EntryIdNo: ";
+      cin >> inputInt;
+      Friends(root, inputInt);
+    } else if(inputStr == commandList[7].command) {
+      int tree_size = size(root, 0);
+      cout << "Tree Size: " << tree_size << endl;
+    } else if(inputStr == commandList[8].command) {
+      // printNext();
+    } else if(inputStr == commandList[9].command) {
+      // deleteUser();
+    } else if(inputStr == commandList[10].command) {
       cout << "bst[contains]> Entry IdNo: ";
       cin >> inputInt;
       bool status_contains = contains(root, inputInt);
       if(status_contains != 1) {
         cout << "I'm sorry. There is not a member." << endl;
       }
-    } else if(inputStr == commandList[7]) {
-      cout << "bst[print-greater]> Entry IdNo: ";
-      cin >> inputInt;
-      printGreater(root, inputInt);
-    } else if(inputStr == commandList[8]) {
-      cout << "bst[getFriends]> EntryIdNo: ";
-      cin >> inputInt;
-      Friends(root, inputInt);
-    } else if(inputStr == commandList[9]) {
-      int tree_size = size(root, 0);
-      cout << "Tree Size: " << tree_size << endl;
+    } else if(inputStr == commandList[11].command) {
+      root = test(root);
     } else {
       cout << "Unknown command...";
     }
