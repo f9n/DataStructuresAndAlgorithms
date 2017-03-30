@@ -44,11 +44,13 @@ void startingMenu() {
 void shellMenu(node * root) {
   string inputStr;
   int inputInt;
-  string commandList[8] = {"insertuser", "printinorder", "test",
-                           "contains", "exit", "help", "clear", "printgreater"};
-  string commandListDescription[8] = {"insert a new user", "print in order", "testing command",
+  string commandList[10] = {"insertuser", "printinorder", "test",
+                           "contains", "exit", "help", "clear",
+                            "printgreater", "getfriends", "size"};
+  string commandListDescription[10] = {"insert a new user", "print in order", "testing command",
                                       "contains idno in tree", "exit the program", "listing command list",
-                                      "clear screen", "printing greater id no"};
+                                       "clear screen", "printing greater id no", "get friends in node",
+                                       "size of tree"};
   while(1) {
     cout << endl << "bst> ";
     cin >> inputStr;
@@ -58,7 +60,7 @@ void shellMenu(node * root) {
       system("clear");
     } else if(inputStr == commandList[5]) {
       cout << "\tCOMMAND LIST" << endl;
-      for(int i = 0; i < 8; i++) {
+      for(int i = 0; i < 10; i++) {
         cout << " " << commandList[i] << "  : " + commandListDescription[i] << endl;
       }
     } else if(inputStr == commandList[0]) {
@@ -97,6 +99,15 @@ void shellMenu(node * root) {
       cout << "bst[print-greater]> Entry IdNo: ";
       cin >> inputInt;
       printGreater(root, inputInt);
+    } else if(inputStr == commandList[8]) {
+      cout << "bst[getFriends]> EntryIdNo: ";
+      cin >> inputInt;
+      Friends(root, inputInt);
+    } else if(inputStr == commandList[9]) {
+      int tree_size = size(root, 0);
+      cout << "Tree Size: " << tree_size << endl;
+    } else {
+      cout << "Unknown command...";
     }
   }
 }
