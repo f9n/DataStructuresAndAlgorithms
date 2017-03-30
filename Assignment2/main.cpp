@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <unistd.h>
+#include <iomanip>
 #include "util.h"
 using namespace std;
 
@@ -70,9 +71,15 @@ void shellMenu(node * root) {
     } else if(inputStr == commandList[1].command) {
       system("clear");
     } else if(inputStr == commandList[2].command) {
-      cout << "\tCOMMAND LIST" << endl;
+      cout << "COMMANDS" << endl;
+      cout << "========" << endl << endl;
+      cout << " " << setw(20) << setfill(' ') << "Command";
+      cout << " : " << "Description" << endl;
+      cout << " " << setw(20) << setfill(' ') << "-------";
+      cout << " : " << "-----------" << endl;
       for(int i = 0; i < 12; i++) {
-        cout << " " << commandList[i].command << "  : " + commandList[i].description << endl;
+        cout << " " << setw(20) << setfill(' ')<< commandList[i].command;
+        cout << " : " << commandList[i].description << endl;
       }
     } else if(inputStr == commandList[3].command) {
       int IdNo;
@@ -95,21 +102,23 @@ void shellMenu(node * root) {
       root = insertNewUser(root, IdNo, username, surname, friends, friendsAmount);
       cout << "Inserted All!";
     } else if(inputStr == commandList[4].command) {
-      cout << "PrintInOrder..." << endl;
+      //cout << "bst[printinorder]> " << endl;
       printInOrder(root);
     } else if(inputStr == commandList[5].command) {
       cout << "bst[print-greater]> Entry IdNo: ";
       cin >> inputInt;
       printGreater(root, inputInt);
     } else if(inputStr == commandList[6].command) {
-      cout << "bst[getFriends]> EntryIdNo: ";
+      cout << "bst[getFriends]> Entry IdNo: ";
       cin >> inputInt;
       Friends(root, inputInt);
     } else if(inputStr == commandList[7].command) {
       int tree_size = size(root, 0);
       cout << "Tree Size: " << tree_size << endl;
     } else if(inputStr == commandList[8].command) {
-      // printNext();
+      cout << "bst[printnext]> Entry IdNo: ";
+      cin >> inputInt;
+      printNext(root, inputInt);
     } else if(inputStr == commandList[9].command) {
       // deleteUser();
     } else if(inputStr == commandList[10].command) {
