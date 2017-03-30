@@ -58,6 +58,9 @@ void test(node * root) {
   root = deleteUser(root, 80);
   displayTreeWithInorder(root);
   */
+
+  cout << endl << "[=] Testing printNext Function" << endl;
+  printNext(root, 30);
 }
 
 /*

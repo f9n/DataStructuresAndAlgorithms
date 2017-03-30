@@ -4,6 +4,10 @@
 using namespace std;
 
 
+void printNext(node * root, int IdNo) {
+  node * user = getUser(root, IdNo);
+  displayTreeWithInorder(user);
+}
 node * max(node * root) {
   if(root != NULL && root->Right != NULL) {
     root = max(root->Right);
