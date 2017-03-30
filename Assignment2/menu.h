@@ -10,6 +10,7 @@ struct commands {
 
 void startingMenu();
 void shellMenu(node * root);
+node * automaticInsertUser(node * root);
 node * test(node * root);
 
 #endif // MENU_H

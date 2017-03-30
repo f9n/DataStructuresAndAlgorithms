@@ -23,7 +23,7 @@ void startingMenu() {
   }
 }
 void shellMenu(node * root) {
-  struct commands commandList[12] = {
+  struct commands commandList[13] = {
     {"exit", "exit the program"}, // 0
     {"clear", "clear screen"}, // 1
     {"help", "listed command list"}, // 2
@@ -35,7 +35,8 @@ void shellMenu(node * root) {
     {"printnext", "print subtree"}, // 8
     {"deleteuser", "deleting a user"}, // 9
     {"contains", "contains IdNo in tree"}, // 10
-    {"test", "testing program functions"} // 11
+    {"test", "testing program functions"}, // 11
+    {"insertautomatic", "insert users automatic way "} // 12
   };
   string inputStr;
   int inputInt;
@@ -53,7 +54,7 @@ void shellMenu(node * root) {
       cout << " : " << "Description" << endl;
       cout << " " << setw(20) << setfill(' ') << "-------";
       cout << " : " << "-----------" << endl;
-      for(int i = 0; i < 12; i++) {
+      for(int i = 0; i < 13; i++) {
         cout << " " << setw(20) << setfill(' ')<< commandList[i].command;
         cout << " : " << commandList[i].description << endl;
       }
@@ -106,13 +107,14 @@ void shellMenu(node * root) {
       }
     } else if(inputStr == commandList[11].command) {
       root = test(root);
+    } else if(inputStr == commandList[12].command) {
+      root =  automaticInsertUser(root);
     } else {
       cout << "Unknown command...";
     }
   }
 }
-node * test(node * root) {
-  cout << endl << "[=] Tree ..." << endl;
+node * automaticInsertUser(node * root) {
   root = insertNewUserWithFriends(root, 20, "Ozgur", "Yildirim", 2, 4, 5);
   root = insertNewUserWithFriends(root, 30, "Esra", "Atas", 1, 3);
   root = insertNewUserWithFriends(root, 40, "Emre", "Bugra", 1, 6);
@@ -123,6 +125,11 @@ node * test(node * root) {
   root = insertNewUserWithFriends(root, 5, "Esra", "Atas", 1, 10);
   root = insertNewUserWithFriends(root, 28, "Emre", "Bugra", 2, 80, 90);
   root = insertNewUserWithFriends(root, 80, "Okan", "Yeah", 2, 100, 110);
+  return root;
+}
+node * test(node * root) {
+  cout << endl << "[=] Tree ..." << endl;
+  root =  automaticInsertUser(root);
   displayTreeWithInorder(root);
 
   cout << endl << "[=] Testing Contains Function" << endl;
