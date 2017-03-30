@@ -3,9 +3,19 @@
 #include "util.h"
 using namespace std;
 
+void test(node * root);
 int main() {
   cout << "Hi, Started Program" << endl;
   node * root = NULL;
+
+  test(root);
+
+  destroyFriends(root);
+  destroyNodes(root);
+  return 0;
+}
+
+void test(node * root) {
   cout << endl << "[=] Tree ..." << endl;
   root = insertNewUserWithFriends(root, 20, "Ozgur", "Yildirim", 2, 4, 5);
   root = insertNewUserWithFriends(root, 30, "Esra", "Atas", 1, 3);
@@ -30,10 +40,16 @@ int main() {
   cout << endl << "[=] Testing size Function" << endl;
   int tree_size = size(root, 0);
   cout << "Tree Size: " << tree_size << endl;
-  
-  destroyFriends(root);
-  destroyNodes(root);
-  return 0;
+
+  cout << endl << "[=] Testing max Function" << endl;
+  node * max_node = max(root); // Maybe it return NULL
+  cout << "Max IdNo: " << max_node->IdNo << endl;
+
+  cout << endl << "[=] Testing min Function" << endl;
+  node * min_node = min(root); // Maybe it return NULL
+  cout << "Min IdNo: " << min_node->IdNo << endl;
+
+
 }
 
 /*

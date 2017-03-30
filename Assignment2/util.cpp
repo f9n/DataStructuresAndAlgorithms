@@ -4,6 +4,18 @@
 using namespace std;
 
 
+node * max(node * root) {
+  if(root != NULL && root->Right != NULL) {
+    root = max(root->Right);
+  }
+  return root;
+}
+node * min(node * root) {
+  if(root != NULL && root->Left != NULL) {
+    root = min(root->Left);
+  }
+  return root;
+}
 int size(node * root, int amount) {
   if(root != NULL) {
     amount++;
