@@ -3,6 +3,9 @@
 
 using namespace std;
 
+void printInOrder(node * root) {
+  displayTreeWithInorder(root);
+}
 void printGreater(node * root, int IdNo) {
   if(root != NULL) {
     if(root->IdNo > IdNo) {
@@ -14,7 +17,6 @@ void printGreater(node * root, int IdNo) {
       printGreater(root->Right, IdNo);
     }
     if(root->IdNo == IdNo) {
-      //cout << "Root->Id == IdNo" << endl;
       displayOneNode(root);
       displayTreeWithInorder(root->Right);
     }
@@ -42,6 +44,14 @@ node * deleteUser(node * root, int IdNo) {
   cout << "[.] Entry Function" << endl;
   node * user = getUser(root, IdNo);
   cout << "[.] Runned getUser Function" << endl;
+  node * parent = NULL;
+  if(user->Left != NULL && user->Right != NULL) {
+    // It has double child.
+  } else if(user->Left == NULL && user->Right == NULL) {
+    // It has not child.
+  } else {
+    
+  }
   node * subTree = user->Left;
   node * parent = getMaxsParentTree(subTree);
   cout << "[.] Runned getMaxsParentTree Function" << endl;
@@ -49,7 +59,6 @@ node * deleteUser(node * root, int IdNo) {
   parent->Right->Left = user->Left;
 
   user = parent->Right;
-
   parent->Right = NULL;
   free()
   return root;
@@ -167,7 +176,6 @@ void displayTreeWithInorder(node * tree) {
     displayTreeWithInorder(tree->Right);
   }
 }
-
 void destroyFriends(node * tree) {
   if(tree != NULL) {
     free(tree->IdOfFriends);
@@ -182,4 +190,3 @@ void destroyNodes(node * tree) {
     free(tree);
   }
 }
-
