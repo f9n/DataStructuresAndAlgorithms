@@ -16,6 +16,24 @@ node * min(node * root) {
   }
   return root;
 }
+/*
+node * deleteUser(node * root, int IdNo) {
+  cout << "[.] Entry Function" << endl;
+  node * user = getUser(root, IdNo);
+  cout << "[.] Runned getUser Function" << endl;
+  node * subTree = user->Left;
+  node * parent = getMaxsParentTree(subTree);
+  cout << "[.] Runned getMaxsParentTree Function" << endl;
+  parent->Right->Right = user->Right;
+  parent->Right->Left = user->Left;
+
+  user = parent->Right;
+
+  parent->Right = NULL;
+  free()
+  return root;
+}
+*/
 int size(node * root, int amount) {
   if(root != NULL) {
     amount++;
@@ -23,6 +41,15 @@ int size(node * root, int amount) {
     amount += size(root->Right, 0);
   }
   return amount;
+}
+node * getMaxsParentTree(node * root) {
+  /*
+    Find max node's parent
+   */
+  if(root != NULL && root->Right->Right != NULL) {
+    root = getMaxsParentTree(root->Right);
+  }
+  return root;
 }
 node * getUser(node * root, int IdNo) {
   if(root != NULL) {

@@ -26,11 +26,12 @@ node * insertNewUser(node * root, int idno, string username, string surname, int
 node * getUser(node * root, int IdNo);
 bool contains(node * root, int IdNo);
 bool Friends(node * root, int IdNo);
-node * deleteUser(int IdNo);
+node * deleteUser(node * root, int IdNo);
 int size(node * tree, int amount);
 
 node * max(node * tree);
 node * min(node * tree);
+node * getMaxsParentTree(node * tree);
 
 void destroyFriends(node * tree);
 void destroyNodes(node * tree);

@@ -49,7 +49,15 @@ void test(node * root) {
   node * min_node = min(root); // Maybe it return NULL
   cout << "Min IdNo: " << min_node->IdNo << endl;
 
+  cout << endl << "[=] Testing getMaxsParentTree Function" << endl;
+  node * maxNodeParent = getMaxsParentTree(root);
+  cout << "Max Node's Parent in Tree: " << maxNodeParent->IdNo << endl;
 
+  /*
+  cout << endl << "[=] Testing deleteUser Function" << endl;
+  root = deleteUser(root, 80);
+  displayTreeWithInorder(root);
+  */
 }
 
 /*
