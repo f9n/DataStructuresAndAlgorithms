@@ -1,21 +1,106 @@
 #include <iostream>
 #include <stdlib.h>
+#include <unistd.h>
 #include "util.h"
 using namespace std;
 
-void test(node * root);
+void startingMenu();
+node * test(node * root);
+void shellMenu(node * root);
 int main() {
   cout << "Hi, Started Program" << endl;
   node * root = NULL;
 
-  test(root);
+  //startingMenu();
+  shellMenu(root);
+  //test(root);
 
   destroyFriends(root);
   destroyNodes(root);
   return 0;
 }
 
-void test(node * root) {
+void startingMenu() {
+  string starting ="Starting the Project";
+  string starting2;
+  for(int i=1; i < 5; i++) {
+    char ch;
+    int j = 1;
+    while(j < 20) {
+      starting2 = starting;
+      starting2[j] = isupper(starting2[j]) ? tolower(starting2[j]) : toupper(starting2[j]);
+      switch(j % 3) {
+      case 0: ch = '/'; break;
+      case 1: ch = '-'; break;
+      case 2: ch = '\\';break;
+      }
+      system("clear");
+      cout << "[+] " << starting2 << "..." << ch << endl;
+      usleep(100 * 1000);
+      j += 1;
+    }
+  }
+}
+void shellMenu(node * root) {
+  string inputStr;
+  int inputInt;
+  string commandList[8] = {"insertuser", "printinorder", "test",
+                           "contains", "exit", "help", "clear", "printgreater"};
+  string commandListDescription[8] = {"insert a new user", "print in order", "testing command",
+                                      "contains idno in tree", "exit the program", "listing command list",
+                                      "clear screen", "printing greater id no"};
+  while(1) {
+    cout << endl << "bst> ";
+    cin >> inputStr;
+    if(inputStr == commandList[4]) {
+      break;
+    } else if(inputStr == commandList[6]) {
+      system("clear");
+    } else if(inputStr == commandList[5]) {
+      cout << "\tCOMMAND LIST" << endl;
+      for(int i = 0; i < 8; i++) {
+        cout << " " << commandList[i] << "  : " + commandListDescription[i] << endl;
+      }
+    } else if(inputStr == commandList[0]) {
+      int IdNo;
+      string username, surname;
+      int friendsAmount;
+      int * friends = NULL;
+      cout << "bst[insert-idno]> ";
+      cin >> IdNo;
+      cout << "bst[insert-username]> ";
+      cin >> username;
+      cout << "bst[insert-surname]> ";
+      cin >> surname;
+      cout << "bst[insert-friendsamount]> ";
+      cin >> friendsAmount;
+      friends = (int*)malloc(sizeof(int) * friendsAmount);
+      for(int i=0; i < friendsAmount; i++) {
+        cout << "bst[insert-friendsId]" << i << "> ";
+        cin >> friends[i];
+      }
+      root = insertNewUser(root, IdNo, username, surname, friends, friendsAmount);
+      cout << "Inserted All!";
+    } else if(inputStr == commandList[1]) {
+      cout << "PrintInOrder..." << endl;
+      printInOrder(root);
+    } else if(inputStr == commandList[2]) {
+      root = test(root);
+    } else if(inputStr == commandList[3]) {
+      cout << "bst[contains]> Entry IdNo: ";
+      cin >> inputInt;
+      bool status_contains = contains(root, inputInt);
+      if(status_contains != 1) {
+        cout << "I'm sorry. There is not a member." << endl;
+      }
+    } else if(inputStr == commandList[7]) {
+      cout << "bst[print-greater]> Entry IdNo: ";
+      cin >> inputInt;
+      printGreater(root, inputInt);
+    }
+  }
+}
+node * test(node * root) {
   cout << endl << "[=] Tree ..." << endl;
   root = insertNewUserWithFriends(root, 20, "Ozgur", "Yildirim", 2, 4, 5);
   root = insertNewUserWithFriends(root, 30, "Esra", "Atas", 1, 3);
@@ -67,6 +152,7 @@ void test(node * root) {
 
   cout << endl << "[=] Testing printInOrder Function" << endl;
   printInOrder(root);
+  return root;
 }
 
 /*
