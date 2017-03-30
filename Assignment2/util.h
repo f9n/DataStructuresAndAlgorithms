@@ -29,6 +29,7 @@ bool Friends(node * root, int IdNo);
 node * deleteUser(node * root, int IdNo);
 int size(node * tree, int amount);
 void printNext(node * tree, int IdNo);
+void printGreater(node * tree, int IdNo);
 
 node * max(node * tree);
 node * min(node * tree);

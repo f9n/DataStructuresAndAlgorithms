@@ -3,10 +3,27 @@
 
 using namespace std;
 
-
+void printGreater(node * root, int IdNo) {
+  if(root != NULL) {
+    if(root->IdNo > IdNo) {
+      printGreater(root->Left, IdNo);
+      displayOneNode(root);
+      displayTreeWithInorder(root->Right);
+    }
+    if(root->IdNo < IdNo) {
+      printGreater(root->Right, IdNo);
+    }
+    if(root->IdNo == IdNo) {
+      //cout << "Root->Id == IdNo" << endl;
+      displayOneNode(root);
+      displayTreeWithInorder(root->Right);
+    }
+  }
+}
 void printNext(node * root, int IdNo) {
   node * user = getUser(root, IdNo);
-  displayTreeWithInorder(user);
+  displayTreeWithInorder(user->Left);
+  displayTreeWithInorder(user->Right);
 }
 node * max(node * root) {
   if(root != NULL && root->Right != NULL) {

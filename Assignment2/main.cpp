@@ -61,6 +61,9 @@ void test(node * root) {
 
   cout << endl << "[=] Testing printNext Function" << endl;
   printNext(root, 30);
+
+  cout << endl << "[=] Testing printGreater Function" << endl;
+  printGreater(root, 12);
 }
 
 /*
