@@ -21,6 +21,14 @@ void startingMenu() {
       j += 1;
     }
   }
+  cout << endl <<
+    "\t" << "######   #######  #########     " << endl <<
+    "\t" << "#    ##  #            #         " << endl <<
+    "\t" << "#    ##  #            #         " << endl <<
+    "\t" << "######   #######      #         " << endl <<
+    "\t" << "#    ##        #      #         " << endl <<
+    "\t" << "#    ##        #      #         " << endl <<
+    "\t" << "######   #######      #     <Assingment 2>     " << endl;
 }
 void shellMenu(node * root) {
   struct commands commandList[13] = {
