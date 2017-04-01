@@ -1,9 +1,11 @@
 #ifndef _MENU_H
 #define _MENU_H
+
 #include <iostream>
 #include <unistd.h>
 #include <iomanip>
 #include "util.h"
+#include "colors.h"
 
 struct commands {
   string command;

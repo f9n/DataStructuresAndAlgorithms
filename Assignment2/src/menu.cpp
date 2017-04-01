@@ -16,7 +16,7 @@ void startingMenu() {
       }
       system("clear");
       cout << "[+] " << starting2 << "..." << ch << endl;
-      usleep(100 * 1000);
+      usleep(50 * 1000);
       j += 1;
     }
   }
@@ -49,7 +49,7 @@ void shellMenu(node * root) {
   string inputStr;
   int inputInt;
   while(1) {
-    cout << endl << "bst> ";
+    cout << endl << FBLU("bst> ");
     cin >> inputStr;
     if(inputStr == commandList[0].command) {
       break;
@@ -105,7 +105,9 @@ void shellMenu(node * root) {
       cin >> inputInt;
       printNext(root, inputInt);
     } else if(inputStr == commandList[9].command) {
-      // deleteUser();
+      cout << "bst[deleteuser]> Entry IdNo: ";
+      cin >> inputInt;
+      root = deleteUser(root, inputInt);
     } else if(inputStr == commandList[10].command) {
       cout << "bst[contains]> Entry IdNo: ";
       cin >> inputInt;
@@ -120,7 +122,6 @@ void shellMenu(node * root) {
     } else if(inputStr == commandList[13].command) {
       cout << "bst[insertfile]> Entry filename: ";
       cin >> inputStr;
-      cout << inputStr << endl;
       root = insertUsersFromFile(root, inputStr);
     } else {
       cout << "Unknown command...";
@@ -187,11 +188,6 @@ node * test(node * root) {
 }
 
 /*
-  root->IdOfFriends[0] = 5;
-  root->IdOfFriendsAmount++;
-  displayOneNode(root);
-  root->IdOfFriends = (int*)realloc(root->IdOfFriends, sizeof(int));
-  root->IdOfFriends[1] = 4;
-  root->IdOfFriendsAmount++;
-  displayOneNode(root);
+
+  root->IdOfFriends = (int*)realloc(root->IdOfFriends, sizeof(int))
 */

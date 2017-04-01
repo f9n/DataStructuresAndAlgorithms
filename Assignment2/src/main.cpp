@@ -6,7 +6,7 @@ int main() {
   cout << "Hi, Started Program" << endl;
   node * root = NULL;
 
-  //startingMenu();
+  startingMenu();
   shellMenu(root);
 
   destroyFriends(root);
