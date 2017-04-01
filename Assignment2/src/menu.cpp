@@ -49,7 +49,7 @@ void shellMenu(node * root) {
   string inputStr;
   int inputInt;
   while(1) {
-    cout << endl << FBLU("bst> ");
+    cout << endl << BOLD(FBLU("bst> "));
     cin >> inputStr;
     if(inputStr == commandList[0].command) {
       break;
@@ -71,17 +71,17 @@ void shellMenu(node * root) {
       string username, surname;
       int friendsAmount;
       int * friends = NULL;
-      cout << "bst[insert-idno]> ";
+      cout << FGRN("bst[insert-idno]> ");
       cin >> IdNo;
-      cout << "bst[insert-username]> ";
+      cout << FGRN("bst[insert-username]> ");
       cin >> username;
-      cout << "bst[insert-surname]> ";
+      cout << FGRN("bst[insert-surname]> ");
       cin >> surname;
-      cout << "bst[insert-friendsamount]> ";
+      cout << FGRN("bst[insert-friendsamount]> ");
       cin >> friendsAmount;
       friends = (int*)malloc(sizeof(int) * friendsAmount);
       for(int i=0; i < friendsAmount; i++) {
-        cout << "bst[insert-friendsId]" << i << "> ";
+        cout << FGRN("bst[insert-friendsId]") << i << FGRN("> ");
         cin >> friends[i];
       }
       root = insertNewUser(root, IdNo, username, surname, friends, friendsAmount);
@@ -90,26 +90,26 @@ void shellMenu(node * root) {
       //cout << "bst[printinorder]> " << endl;
       printInOrder(root);
     } else if(inputStr == commandList[5].command) {
-      cout << "bst[print-greater]> Entry IdNo: ";
+      cout << FCYN("bst[print-greater]> Entry IdNo: ");
       cin >> inputInt;
       printGreater(root, inputInt);
     } else if(inputStr == commandList[6].command) {
-      cout << "bst[getFriends]> Entry IdNo: ";
+      cout << FCYN("bst[getFriends]> Entry IdNo: ");
       cin >> inputInt;
       Friends(root, inputInt);
     } else if(inputStr == commandList[7].command) {
       int tree_size = size(root, 0);
       cout << "Tree Size: " << tree_size << endl;
     } else if(inputStr == commandList[8].command) {
-      cout << "bst[printnext]> Entry IdNo: ";
+      cout << FCYN("bst[printnext]> Entry IdNo: ");
       cin >> inputInt;
       printNext(root, inputInt);
     } else if(inputStr == commandList[9].command) {
-      cout << "bst[deleteuser]> Entry IdNo: ";
+      cout << FRED("bst[deleteuser]> Entry IdNo: ");
       cin >> inputInt;
       root = deleteUser(root, inputInt);
     } else if(inputStr == commandList[10].command) {
-      cout << "bst[contains]> Entry IdNo: ";
+      cout << FCYN("bst[contains]> Entry IdNo: ");
       cin >> inputInt;
       bool status_contains = contains(root, inputInt);
       if(status_contains != 1) {
@@ -120,11 +120,11 @@ void shellMenu(node * root) {
     } else if(inputStr == commandList[12].command) {
       root =  automaticInsertUser(root);
     } else if(inputStr == commandList[13].command) {
-      cout << "bst[insertfile]> Entry filename: ";
+      cout << FMAG("bst[insertfile]> Entry filename: ");
       cin >> inputStr;
       root = insertUsersFromFile(root, inputStr);
     } else {
-      cout << "Unknown command...";
+      cout << UNDL("Unknown command...Please write `help` command");
     }
   }
 }

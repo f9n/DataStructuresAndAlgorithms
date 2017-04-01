@@ -59,6 +59,10 @@ void printGreater(node * root, int IdNo) {
 }
 void printNext(node * root, int IdNo) {
   node * user = getUser(root, IdNo);
+  if(user == NULL) {
+    cerr << "There is not a sub tree" << endl;
+    return;
+  }
   displayTreeWithInorder(user->Left);
   displayTreeWithInorder(user->Right);
 }
