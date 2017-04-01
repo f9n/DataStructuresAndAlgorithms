@@ -31,6 +31,7 @@ node * insertUsersFromFile(node * root, string filename) {
     for(int i =0; i < amount ; i++) {
       cout << " " << friends[i];
     }
+    free(friends);
   }
   infile.close();
   return root;
