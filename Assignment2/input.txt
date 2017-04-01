@@ -1,2 +1,11 @@
-20 Ozgur Yildirim 2 4 5
-30 Nick Ross 4 1 2 3 4
+20 Sagopa Kajmer 2 4 5
+30 Norm Ender 4 1 2 3 4
+40 Baris Akarsu 0
+25 Sezen Aksu 1 5
+12 MFO _ 3 10 20 30
+35 h4rvey r0ss 2 25 30
+80 Ahmet Kaya 3 100 200 3
+42 Muslum Gurses 3 1 2 3
+100 Baris Manco 1 12
+70 Cem Karaca 4 15 80 109 901
+4 Erkin Koray 1 5
