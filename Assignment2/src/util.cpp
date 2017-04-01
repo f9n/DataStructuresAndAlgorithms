@@ -1,17 +1,15 @@
 #include <iostream>
 #include <fstream>
-//#include <cstdio>
 #include "util.h"
 
 using namespace std;
 
 node * insertUsersFromFile(node * root, string filename) {
-  system("ls");
+  //system("ls");
   int id, amount;
   string username, surname;
   int * friends = NULL;
-  cout << "Runned insertUsersFromFile function" << endl;
-  cout << "Filename: " << filename << " $";
+  cout << "Filename: " << filename;
   ifstream infile;
   infile.open(filename);
   if(!infile) {
@@ -24,10 +22,14 @@ node * insertUsersFromFile(node * root, string filename) {
     infile >> surname;
     infile >> amount;
     friends = (int *)malloc(sizeof(int) * amount);
+    if(friends == NULL) {
+      cerr << "Allocation Error! In insertUsersFromFile function, allocation friends int array!";
+      return root;
+    }
     for(int i = 0; i < amount ; i++) {
       infile >> friends[i];
     }
-    cout << endl << id << " " << username << " " << surname << " " << amount << endl;
+    cout << endl << id << " " << username << " " << surname << " " << amount;
     for(int i =0; i < amount ; i++) {
       cout << " " << friends[i];
     }
@@ -61,14 +63,54 @@ void printNext(node * root, int IdNo) {
   displayTreeWithInorder(user->Right);
 }
 node * max(node * root) {
+  while(root->Right != NULL) {
+    root = root->Right;
+  }
+  return root;
+    /*
   if(root != NULL && root->Right != NULL) {
     root = max(root->Right);
   }
   return root;
+    */
 }
 node * min(node * root) {
+  while(root->Left != NULL) {
+    root = root->Left;
+  }
+  return root;
+  /*
   if(root != NULL && root->Left != NULL) {
     root = min(root->Left);
+  }
+  return root;
+  */
+}
+
+node * deleteUser(node * root, int IdNo) {
+  if(root == NULL) {
+    return NULL;
+  }
+  if(root->IdNo == IdNo) {
+    if(root->Left == NULL && root->Right == NULL) {
+      return NULL;
+    }
+    if(root->Right != NULL) {
+      root = min(root->Right);
+      root->Right = deleteUser(root->Right, min(root->Right)->IdNo);
+      return root;
+    }
+    if(root->Left != NULL) {
+      root = max(root->Left);
+      root->Left = deleteUser(root->Left, max(root->Left)->IdNo);
+      return root;
+    }
+  }
+  if(root->IdNo < IdNo) {
+    root->Right = deleteUser(root->Right, IdNo);
+  }
+  if(root->IdNo > IdNo) {
+    root->Left = deleteUser(root->Left, IdNo);
   }
   return root;
 }
@@ -148,6 +190,10 @@ node * insertNewUser(node * parent, int x, string username, string surname, int 
    */
   if(parent == NULL) {
     parent = (node *)malloc(sizeof(node));
+    if(parent == NULL) {
+      cerr << "Allocation error! From allocation node struct!";
+      return parent;
+    }
     parent->Left  = NULL;
     parent->Right = NULL;
     parent->IdNo = x;
@@ -169,6 +215,10 @@ node * insertNewUserWithFriends(node * parent, int x, string username, string su
   va_list ap;
   if(args > 0) {
     int * IdOfFriends = (int*)malloc(sizeof(int) * args);
+    if(IdOfFriends == NULL) {
+      cerr << "Allocation error! From allocation IdOfFriends integer array!" << endl;
+      return parent;
+    }
     int IdOfFriendsAmount = args;
     va_start(ap, args);
     for(int i=0;i < args; i++){
@@ -182,9 +232,7 @@ node * insertNewUserWithFriends(node * parent, int x, string username, string su
 }
 
 void displayFriendsOneNode(node * root) {
-  //cout << "### DisplayFriendsOneNode - Login" << endl;
   if(root->IdOfFriends != NULL) {
-    //cout << "### DisplayFriendsOneNode - Not Null" << endl;
     for(int i = 0; i < root->IdOfFriendsAmount; i++) {
       cout << "\t" << i << ". friend id: " << root->IdOfFriends[i] << endl;
     }
@@ -194,9 +242,7 @@ void displayIdNoUsernameSurnameOneNode(node * root) {
   cout << "[+] IdNo: " << root->IdNo << " Username: " << root->Username << " Surname: " << root->Surname << endl;
 }
 void displayOneNode(node * root) {
-  //cout << "### DisplayOneNode - Login" << endl;
   if(root != NULL) {
-    //cout << "### DisplayOneNode - Not Null" << endl;
     displayIdNoUsernameSurnameOneNode(root);
     displayFriendsOneNode(root);
   }
