@@ -1,4 +1,3 @@
-#include "util.h"
 #include "menu.h"
 
 void startingMenu() {
@@ -31,7 +30,7 @@ void startingMenu() {
     "\t" << "######   #######      #     <Assingment 2>     " << endl;
 }
 void shellMenu(node * root) {
-  struct commands commandList[13] = {
+  struct commands commandList[14] = {
     {"exit", "exit the program"}, // 0
     {"clear", "clear screen"}, // 1
     {"help", "listed command list"}, // 2
@@ -44,7 +43,8 @@ void shellMenu(node * root) {
     {"deleteuser", "deleting a user"}, // 9
     {"contains", "contains IdNo in tree"}, // 10
     {"test", "testing program functions"}, // 11
-    {"insertautomatic", "insert users automatic way "} // 12
+    {"insertautomatic", "insert users automatic way "}, // 12
+    {"insertfile", "insert users from file"} // 13
   };
   string inputStr;
   int inputInt;
@@ -62,7 +62,7 @@ void shellMenu(node * root) {
       cout << " : " << "Description" << endl;
       cout << " " << setw(20) << setfill(' ') << "-------";
       cout << " : " << "-----------" << endl;
-      for(int i = 0; i < 13; i++) {
+      for(int i = 0; i < 14; i++) {
         cout << " " << setw(20) << setfill(' ')<< commandList[i].command;
         cout << " : " << commandList[i].description << endl;
       }
@@ -117,6 +117,11 @@ void shellMenu(node * root) {
       root = test(root);
     } else if(inputStr == commandList[12].command) {
       root =  automaticInsertUser(root);
+    } else if(inputStr == commandList[13].command) {
+      cout << "bst[insertfile]> Entry filename: ";
+      cin >> inputStr;
+      cout << inputStr << endl;
+      root = insertUsersFromFile(root, inputStr);
     } else {
       cout << "Unknown command...";
     }

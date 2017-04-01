@@ -3,6 +3,8 @@
 #include <iostream>
 #include <unistd.h>
 #include <iomanip>
+#include "util.h"
+
 struct commands {
   string command;
   string description;

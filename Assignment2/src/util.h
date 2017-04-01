@@ -20,6 +20,7 @@ void displayIdNoUsernameSurnameOneNode(node * root);
 void displayFriendsOneNode(node * root);
 void displayTreeWithInorder(node * tree);
 
+node * insertUsersFromFile(node * root, string filename);
 node * insertNewUserWithFriends(node * root, int x, string username, string surname, int args, ...);
 node * insertNewUser(node * root, int idno, string username, string surname, int * IdOfFriends, int IdOfFriendsAmount);
 

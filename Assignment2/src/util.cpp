@@ -1,8 +1,40 @@
 #include <iostream>
+#include <fstream>
+//#include <cstdio>
 #include "util.h"
 
 using namespace std;
 
+node * insertUsersFromFile(node * root, string filename) {
+  system("ls");
+  int id, amount;
+  string username, surname;
+  int * friends = NULL;
+  cout << "Runned insertUsersFromFile function" << endl;
+  cout << "Filename: " << filename << " $";
+  ifstream infile;
+  infile.open(filename);
+  if(!infile) {
+    cerr << "Unable to open file!" << endl;
+    return root;
+  }
+  while(!infile.eof()) {
+    infile >> id;
+    infile >> username;
+    infile >> surname;
+    infile >> amount;
+    friends = (int *)malloc(sizeof(int) * amount);
+    for(int i = 0; i < amount ; i++) {
+      infile >> friends[i];
+    }
+    cout << endl << id << " " << username << " " << surname << " " << amount << endl;
+    for(int i =0; i < amount ; i++) {
+      cout << " " << friends[i];
+    }
+  }
+  infile.close();
+  return root;
+}
 void printInOrder(node * root) {
   displayTreeWithInorder(root);
 }
