@@ -1,8 +1,8 @@
 CC=g++
 
 all:
-	mkdir -p obj
-	@echo "Created Obj File!"
+	mkdir -p obj bin
+	@echo "Created obj bin directory!"
 
 compile:	bin/main
 
@@ -10,7 +10,7 @@ help:
 	@echo "make compile   : compile source code"
 	@echo "make run       : compiler source code and run"
 	@echo "make clean     : delete all obj file and executable file."
-	@echo "Before compiler source code, you should create obj directory with this command: make all"
+	@echo "Before compiler source code, you should create obj bin directory with this command: make all"
 
 bin/main: obj/main.o obj/util.o obj/menu.o
 	$(CC) obj/main.o obj/util.o obj/menu.o -o bin/main
