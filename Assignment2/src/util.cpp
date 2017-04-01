@@ -18,8 +18,8 @@ node * insertUsersFromFile(node * root, string filename) {
     cerr << "Unable to open file!" << endl;
     return root;
   }
-  while(!infile.eof()) {
-    infile >> id;
+  // http://stackoverflow.com/questions/21647/reading-from-text-file-until-eof-repeats-last-line
+  while(infile >> id) {
     infile >> username;
     infile >> surname;
     infile >> amount;
