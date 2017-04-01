@@ -35,7 +35,7 @@ void printInOrder(node * tree);
 
 node * max(node * tree);
 node * min(node * tree);
-node * getMaxsParentTree(node * tree);
+//node * getMaxsParentTree(node * tree);
 
 void destroyFriends(node * tree);
 void destroyNodes(node * tree);
