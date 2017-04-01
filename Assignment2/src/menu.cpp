@@ -84,6 +84,7 @@ void shellMenu(node * root) {
         cout << FGRN("bst[insert-friendsId]") << i << FGRN("> ");
         cin >> friends[i];
       }
+      cout << "Called insertNewUser function!"<< endl;
       root = insertNewUser(root, IdNo, username, surname, friends, friendsAmount);
       cout << "Inserted All!";
     } else if(inputStr == commandList[4].command) {
@@ -170,11 +171,9 @@ node * test(node * root) {
   node * maxNodeParent = getMaxsParentTree(root);
   cout << "Max Node's Parent in Tree: " << maxNodeParent->IdNo << endl;
 
-  /*
   cout << endl << "[=] Testing deleteUser Function" << endl;
   root = deleteUser(root, 80);
   displayTreeWithInorder(root);
-  */
 
   cout << endl << "[=] Testing printNext Function" << endl;
   printNext(root, 30);

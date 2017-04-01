@@ -118,31 +118,6 @@ node * deleteUser(node * root, int IdNo) {
   }
   return root;
 }
-/*
-node * deleteUser(node * root, int IdNo) {
-  cout << "[.] Entry Function" << endl;
-  node * user = getUser(root, IdNo);
-  cout << "[.] Runned getUser Function" << endl;
-  node * parent = NULL;
-  if(user->Left != NULL && user->Right != NULL) {
-    // It has double child.
-  } else if(user->Left == NULL && user->Right == NULL) {
-    // It has not child.
-  } else {
-    
-  }
-  node * subTree = user->Left;
-  node * parent = getMaxsParentTree(subTree);
-  cout << "[.] Runned getMaxsParentTree Function" << endl;
-  parent->Right->Right = user->Right;
-  parent->Right->Left = user->Left;
-
-  user = parent->Right;
-  parent->Right = NULL;
-  free()
-  return root;
-}
-*/
 int size(node * root, int amount) {
   if(root != NULL) {
     amount++;
@@ -151,22 +126,25 @@ int size(node * root, int amount) {
   }
   return amount;
 }
+/*
 node * getMaxsParentTree(node * root) {
-  /*
-    Find max node's parent
-   */
+  // Find max node's parent
   if(root != NULL && root->Right->Right != NULL) {
     root = getMaxsParentTree(root->Right);
   }
   return root;
 }
+*/
 node * getUser(node * root, int IdNo) {
   if(root != NULL) {
     if(root->IdNo == IdNo) {
+      cout << "root->IdNo == IdNo ," << root->IdNo << " == " << IdNo << endl;
       return root;
     } else if(root->IdNo < IdNo) {
+      cout << "root->IdNo < IdNo ," << root->IdNo << " < " << IdNo << endl;
       root  = getUser(root->Right, IdNo);
     } else if(root->IdNo > IdNo) {
+      cout << "root->IdNo > IdNo ," << root->IdNo << " > " << IdNo << endl;
       root = getUser(root->Left, IdNo);
     }
   }
@@ -193,21 +171,29 @@ node * insertNewUser(node * parent, int x, string username, string surname, int 
     We are inserting user property to binary search tree.
    */
   if(parent == NULL) {
+    //cout << "parent == Null, Id:" << x << endl;
     parent = (node *)malloc(sizeof(node));
     if(parent == NULL) {
       cerr << "Allocation error! From allocation node struct!";
       return parent;
     }
+    //cout << "Allocation Success!" << endl;
     parent->Left  = NULL;
     parent->Right = NULL;
+    //cout << "Null added." << endl;
     parent->IdNo = x;
+    //cout << "IdNo added." << endl;
     parent->Username = username;
+    //cout << "Added username." << endl;
     parent->Surname  = surname;
+    //cout << "Added some static value" << endl;
     parent->IdOfFriends = IdOfFriends;
     parent->IdOfFriendsAmount = IdOfFriendsAmount;
   } else if(parent->IdNo < x) {
+    cout << "parent->IdNo < Id, Id:" << x << endl;
     parent->Right = insertNewUser(parent->Right, x, username, surname, IdOfFriends, IdOfFriendsAmount);
   } else if(parent->IdNo > x) {
+    cout << "parent->IdNo > Id, Id:" << x << endl;
     parent->Left = insertNewUser(parent->Left, x, username, surname, IdOfFriends, IdOfFriendsAmount);
   }
   return parent;
