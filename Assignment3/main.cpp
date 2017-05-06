@@ -20,12 +20,16 @@ void destroyAll(string *stringArray, int **matrix);
 void displayMatrix(int **adjancencyMatrix);
 void displayColFromMatrix(int **adjacencyMatrix, int col);
 void displayRowFromMatrix(int **adjacencyMatrix, int row);
+int compare(string string1, string string2);
+int **generateMatrix(int **adjancencyMatrix, string *stringArray);
 
 /* Main Section */
 int main() {
   string *stringArray = readStringsFromFile("wordlist.txt");
   int **adjacencyMatrix = allocateMatrix();
+  adjacencyMatrix = generateMatrix(adjacencyMatrix, stringArray);
   //displayStringArray(stringArray);
+  displayRowFromMatrix(adjacencyMatrix, 0);
   destroyAll(stringArray, adjacencyMatrix);
   return 0;
 }
@@ -90,4 +94,29 @@ void displayRowFromMatrix(int **adjacencyMatrix, int row) {
     cout << adjacencyMatrix[row][index] << " ";
   }
   cout << endl;
+}
+int **generateMatrix(int **adjancencyMatrix, string *stringArray) {
+  cout << "[+] Runned generateMatrix Function" << endl;
+  for(int row=0; row < FILESIZE; row++) {
+    adjancencyMatrix[row][row] = 0;
+    for(int col=row+1; col < FILESIZE; col++) {
+      adjancencyMatrix[row][col] = compare(stringArray[row], stringArray[col]);
+      adjancencyMatrix[col][row] = adjancencyMatrix[row][col];
+    }
+  }
+  return adjancencyMatrix;
+}
+int compare(string string1, string string2) {
+  int flag = 0;
+  for(int i=0; i < STRINGSIZE; i++) {
+    if(string1[i] != string2[i]) {
+      flag++;
+    }
+  }
+  if(flag == 1) {
+    cout << "String1: " << string1 << endl;
+    printf( " String2: %s\n", string2.c_str());
+    return 1;
+  }
+  return 0;
 }
