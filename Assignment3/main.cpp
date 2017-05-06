@@ -15,12 +15,15 @@ using namespace std;
 /* Prototypes */
 string *readStringsFromFile(string filename);
 void displayStringArray(string * array);
+int **allocateMatrix();
+void destroyAll(string *stringArray, int **matrix);
 
 /* Main Section */
 int main() {
   string *stringArray = readStringsFromFile("wordlist.txt");
-  displayStringArray(stringArray);
-  free(stringArray);
+  int **adjacencyMatrix = allocateMatrix();
+  //displayStringArray(stringArray);
+  destroyAll(stringArray, adjacencyMatrix);
   return 0;
 }
 
@@ -48,4 +51,20 @@ void displayStringArray(string * array) {
   for(int i=0; i < FILESIZE; i++) {
     cout << i << "  index: " + array[i] << endl;
   }
+}
+int **allocateMatrix() {
+  cout << "[+] Runned allocateMatrix function" << endl;
+  int **adjacencyMatrix = (int**)malloc(FILESIZE * sizeof(int*));
+  for(int index=0;index<FILESIZE;index++) {
+    adjacencyMatrix[index] = (int*)malloc(FILESIZE * sizeof(int));
+  }
+  return adjacencyMatrix;
+}
+void destroyAll(string *stringArray, int **matrix) {
+  cout << "[+] Runned destroyAll function" << endl;
+  free(stringArray);
+  for(int i = 0; i < FILESIZE; i++) {
+    free(matrix[i]);
+  }
+  free(matrix);
 }
