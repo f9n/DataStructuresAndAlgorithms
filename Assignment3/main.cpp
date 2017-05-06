@@ -2,16 +2,29 @@
 #include <fstream>
 #include <string>
 
-#define FILESIZE 2415
-
 using namespace std;
+/* I used links
+ * http://stackoverflow.com/questions/13035674/how-to-read-line-by-line-or-a-whole-text-file-at-once
+ *
+ */
 
+/* VARIABLES */
+#define FILESIZE 2415
+#define STRINGSIZE 5
+
+/* Prototypes */
+string *readStringsFromFile(string filename);
+void displayStringArray(string * array);
+
+/* Main Section */
 int main() {
-  string *stringArray = readStringsFromFile("kelime.txt");
+  string *stringArray = readStringsFromFile("wordlist.txt");
   displayStringArray(stringArray);
   free(stringArray);
   return 0;
 }
+
+/* Functions */
 string * readStringsFromFile(string filename) {
   cout << "[+] Runned readStringsFromFile function" << endl;
   /* Allocate stringArray */
@@ -31,6 +44,7 @@ string * readStringsFromFile(string filename) {
   return stringArray;
 }
 void displayStringArray(string * array) {
+  cout << "[+] Runned displayStringArray function" << endl;
   for(int i=0; i < FILESIZE; i++) {
     cout << i << "  index: " + array[i] << endl;
   }
