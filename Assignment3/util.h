@@ -18,4 +18,7 @@ void displayColFromMatrix(int **adjacencyMatrix, int col);
 void displayRowFromMatrix(int **adjacencyMatrix, int row);
 int compare(string string1, string string2);
 int **generateMatrix(int **adjancencyMatrix, string *stringArray);
+int searchStringFromStringArrayAndReturnIndex(string *stringArray, string tempString);
+void test(int **adjancencyMatrix, string *stringArray, string string1, string string2);
+
 #endif // UTIL_H

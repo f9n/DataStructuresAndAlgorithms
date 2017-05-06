@@ -10,8 +10,11 @@ int main() {
   string *stringArray = readStringsFromFile("wordlist.txt");
   int **adjacencyMatrix = allocateMatrix();
   adjacencyMatrix = generateMatrix(adjacencyMatrix, stringArray);
-  //displayStringArray(stringArray);
-  displayRowFromMatrix(adjacencyMatrix, 0);
+  // displayStringArray(stringArray);
+  // displayRowFromMatrix(adjacencyMatrix, 0);
+  /* It's not working. */
+  int value = searchStringFromStringArrayAndReturnIndex(stringArray, "zebra");
+  cout << "Value Index:" << value << endl;
   destroyAll(stringArray, adjacencyMatrix);
   return 0;
 }

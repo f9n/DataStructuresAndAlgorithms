@@ -81,9 +81,32 @@ int compare(string string1, string string2) {
     }
   }
   if(flag == 1) {
-    cout << "String1: " << string1 << endl;
-    printf( " String2: %s\n", string2.c_str());
+    //cout << "String1: " << string1 << endl;
+    //printf( " String2: %s\n", string2.c_str());
     return 1;
   }
   return 0;
+}
+void test(int **adjancencyMatrix, string *stringArray, string string1, string string2) {
+  int xIndex = searchStringFromStringArrayAndReturnIndex(stringArray, string1);
+  int yIndex = searchStringFromStringArrayAndReturnIndex(stringArray, string2);
+  if(xIndex == -1 || yIndex == -1) {
+    cout << "String is not found in string array! xIndex:" << xIndex << " yIndex:" << yIndex << endl;
+    return;
+  }
+  if(adjancencyMatrix[xIndex][yIndex] == 1) {
+    cout << "There is a one-letter change between two words." << endl;
+  } else {
+    cout << "There is not a one-letter change between two words." << endl;
+  }
+}
+int searchStringFromStringArrayAndReturnIndex(string *stringArray, string tempString) {
+  for(int index = 0; index < FILESIZE; index++) {
+    cout << stringArray[index] << endl;
+    cout << ' ' << tempString << endl;
+    if(stringArray[index] == tempString) {
+      return index;
+    }
+  }
+  return -1;
 }
