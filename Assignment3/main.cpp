@@ -17,6 +17,9 @@ string *readStringsFromFile(string filename);
 void displayStringArray(string * array);
 int **allocateMatrix();
 void destroyAll(string *stringArray, int **matrix);
+void displayMatrix(int **adjancencyMatrix);
+void displayColFromMatrix(int **adjacencyMatrix, int col);
+void displayRowFromMatrix(int **adjacencyMatrix, int row);
 
 /* Main Section */
 int main() {
@@ -67,4 +70,24 @@ void destroyAll(string *stringArray, int **matrix) {
     free(matrix[i]);
   }
   free(matrix);
+}
+void displayMatrix(int **adjancencyMatrix) {
+  cout << "[+] Runned displayMatrix function" << endl;
+  for(int row=0; row < FILESIZE; row++) {
+    displayRowFromMatrix(adjancencyMatrix, row);
+  }
+}
+void displayColFromMatrix(int **adjacencyMatrix, int col) {
+  cout << col << " col:" << endl;
+  for(int index=0; index < FILESIZE; index++) {
+    cout << adjacencyMatrix[index][col] << " ";
+  }
+  cout << endl;
+}
+void displayRowFromMatrix(int **adjacencyMatrix, int row) {
+  cout << row << " row:" << endl;
+  for(int index=0; index < FILESIZE; index++) {
+    cout << adjacencyMatrix[row][index] << " ";
+  }
+  cout << endl;
 }
